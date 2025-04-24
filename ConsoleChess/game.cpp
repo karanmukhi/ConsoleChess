@@ -19,29 +19,22 @@
 
 //Game constructor
 game::game(){
-    //Construcst a game object with two players and a board properly set up
-    boardPoint = std::make_shared<Board::board>(); //initialise the board
-    boardPoint->fillBoard(); //Fill the board with squares and pieceses
-    std::string player1, player2; //Player names
-
-    std::cout << "\n\n\n\nInitialising new game.\nPlease enter the name of player one:\n";
+    std::string player1, player2;
+    std::cout << "Please enter player 1's name:\n";
     std::getline(std::cin, player1);
-    std::cout<< "Please enter the name of player two:\n";
+    std::cout << "Please enter player 2's name:\n";
     std::getline(std::cin, player2);
-    //Randomly assign players to colours
-    srand(static_cast<unsigned int>(time(NULL)));
-    int randomval = rand() % 2;
-    if(randomval){
-        //Initialise palyers
-        white = std::make_unique<player>(player1,true);
-        black = std::make_unique<player>(player2,false);
+    
+    if(rand()%2){
+        white = std::make_unique<player>(player1, true);
+        black = std::make_unique<player>(player2, false);
     }
-    else {
-        //Initialise players
-        white = std::make_unique<player>(player2,true);
-        black = std::make_unique<player>(player1,false);
+    else{
+        white = std::make_unique<player>(player2, true);
+        black = std::make_unique<player>(player1, false);
     }
-    std::cout<< white->getName() << " is white. " << black->getName() << " is black.\n" << white->getName() << " to move first.\n";
+    boardPoint = std::make_shared<Board::board>();
+    boardPoint->fillBoard();
 }
 
 

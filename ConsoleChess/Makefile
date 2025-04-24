@@ -1,20 +1,17 @@
-output: main.o game.o player.o board.o piece.o 
-	g++ main.o game.o player.o board.o piece.o -o run
+output: main.o game.o player.o board.o
+	g++ main.o game.o player.o board.o -o run
 
 main.o: main.cpp
-	g++ -c main.cpp
+	g++ -std=c++14 -c main.cpp
 
 game.o: game.cpp game.hpp
-	g++ -c game.cpp
+	g++ -std=c++14 -c game.cpp
 
 player.o: player.cpp player.hpp
-	g++ -c player.cpp
+	g++ -std=c++14 -c player.cpp
 
 board.o: board.cpp board.hpp
-	g++ -c board.cpp
-
-piece.o: piece.cpp piece.hpp
-	g++ -c piece.cpp
+	g++ -std=c++14 -c board.cpp
 
 clean:
-	rm *.o output
+	rm *.o run
